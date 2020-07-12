@@ -1,141 +1,21 @@
 <meta charset="utf-8">
-{{ .Hugo.Generator }}
-<meta name="author" content="{{ .Site.Params.author }}">
+{{ hugo.Generator }}
+<meta name="author" content="{{ .Site.Author.name }}">
+{{ with .Summary }}
+<meta name="description" content="{{ . }}">
+{{ else }}
 <meta name="description" content="{{ .Site.Params.description }}">
+{{ end }}
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ .Title }}">
+{{ with .Description }}<meta property="og:description" content="{{ . }}">{{ end }}
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{ with .Params.og_image }}<meta property="og:image" content="{{ $.Permalink }}{{ . }}">{{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--<link rel="icon" href="{{ .Site.BaseURL }}/favicon.png">-->
-<link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}">
-<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">
 <link rel="stylesheet" href="https://unpkg.com/mvp.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-<!-- common styles -->
-<style>
-    @font-face {
-        font-family: "Vi University";
-        src: url("/static/font/vi_university.woff") format("woff");
-    }
-    :root {
-        --color: rgb(0,54,44);
-        --color-secondary: rgb(0,105,86);
-        --font-family: 'Segoe UI', 'Noto Sans JP';
-        --hover-brightness: 0.6;
-    }
-    html {
-        font-size: 18px;
-    }
-    body {
-        background-color: rgb(245,245,245);
-        padding: 0;
-    }
-    nav {
-        margin-bottom: 0;
-        flex-flow: row;
-        /* padding: 0 1rem; */
-    }
-    nav ul {
-        margin-left: auto;
-    }
-    nav ul li {
-        text-transform: uppercase;
-    }
-    svg path.theme-color {
-        fill: var(--color-secondary);
-    }
-    .icon-parent {
-        position: relative;
-        width: 1rem;
-    }
-    .icon-parent svg {
-        position: absolute;
-        left: 0;
-        top: -16px;
-    }
-    nav a:hover {
-        text-decoration: none;
-    }
-    main {
-        width: var(--width-content);
-    }
-    footer {
-        text-align: center;
-    }
-    dt {
-        font-weight: bold;
-    }
-    /* dl + h3 {
-        clear: both;
-    }
-    dt {
-        float: left;
-        font-weight: bold;
-        width: 10rem;
-        clear: both;
-        white-space: nowrap;
-        margin-right: 2rem;
-    }
-    dd {
-        display: table-cell;
-        padding-left: 2rem;
-    } */
-
-
-    nav > .logo > a {
-        font-size: 1.5rem;
-    }
-    main > article.list:first-child {
-        margin-top: 0;
-    }
-    article {
-        margin: 2.5rem 0.5rem;
-        padding: 0.5rem 0.5rem;
-        /* margin: 3rem 1rem; */
-    }
-    article.list > h2 {
-        color: var(--color-secondary);
-        font-size: 1.5rem;
-        margin: -0.25rem 0 0 0;
-        font-feature-settings: "palt" 1;
-    }
-    article.list > p {
-        margin: 0;
-        padding: 0.5rem 1px;
-    }
-    .post-meta {
-        font-size: 0.85rem;
-    }
-    .post-meta > time {
-        font-weight: bold;
-        /* font-family: monospace; */
-        /* font-size: 0.8rem; */
-        padding: 0 1.2rem;
-        position: relative;
-    }
-    .post-meta > time::before {
-        display: inline-block;
-        position: absolute;
-        left: 2px;
-        top: 0;
-        content: "";
-        width: 1rem;
-        height: 1rem;
-        background-image: url("data:image/svg+xml,<svg width='1rem' height='1rem' viewBox='0 -4 16 20' class='bi bi-calendar-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z'/><path d='M2 1a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2H2zm14 4H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5z'/></svg>");
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-    .post-meta > a {
-        padding: 0 1rem;
-        position: relative;
-    }
-    .post-meta > a::before {
-        display: inline-block;
-        position: absolute;
-        left: 0;
-        top: 2px;
-        content: "";
-        width: 1rem;
-        height: 1rem;
-        background-image: url("data:image/svg+xml,<svg width='1rem' height='1rem' viewBox='0 0 16 16' class='bi bi-tag-fill' fill='rgb(0, 105, 86)' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/></svg>");
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-</style>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/list.css">
+<link rel="stylesheet" href="/css/chroma-github.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
