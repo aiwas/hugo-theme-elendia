@@ -1,0 +1,70 @@
+{{ define "styles" }}
+<style>
+    h1 {
+        /* margin: -1rem 0; */
+        font-family: "VI University";
+        font-size: 6rem;
+        font-weight: normal !important;
+        color: var(--color);
+        /* color: rgb(245, 245, 245);
+        text-shadow:
+            1px  1px 1px var(--color),
+            -1px  1px 1px var(--color),
+            1px -1px 1px var(--color),
+            -1px -1px 1px var(--color),
+            1px  0px 1px var(--color),
+            0px  1px 1px var(--color),
+            -1px  0px 1px var(--color),
+            0px -1px 1px var(--color); */
+    }
+    .paginator {
+        display: flex;
+        /* flex-flow: row; */
+        justify-content: center;
+        padding: 0 1rem;
+    }
+    .paginator > * {
+        width: 4rem;
+        text-align: center;
+    }
+    /* .paginator a {
+        color: rgb(245,245,245);
+        background-color: var(--color-secondary);
+        padding: 0.1rem 0.5rem;
+        border-radius: 1rem;
+        text-decoration: none;
+    } */
+    /* .paginator > *:last-child {
+        margin-left: auto;
+    } */
+</style>
+{{ end }}
+
+{{ define "main" }}
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "post" ) }}
+    {{ range $paginator.Pages }}
+    <article class="list">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Summary | plainify }}</p>
+        <div class="post-meta">
+            {{ $date := dateFormat "2006-01-02" .Lastmod }}
+            <time datetime="{{ $date }}">{{ $date }}</time>
+            {{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}{{ end }}
+        </div>
+    </article>
+    {{ end }}
+    
+    <div class="paginator">
+        <span>
+            {{ if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}">Prev</a>
+            {{ end }}
+        </span>
+        <span>{{ .Paginator.PageNumber }}</span>
+        <span>
+            {{ if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}">Next</a>
+            {{ end }}
+        </span>
+    </div>
+{{ end }}

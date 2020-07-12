@@ -1,0 +1,12 @@
+name = "Elendia"
+license = "MIT"
+licenselink = "https://github.com/aiwas/hugo-theme-elendia/blob/master/LICENSE"
+description = "A simple, minimal theme for Hugo"
+homepage = "https://github.com/aiwas/hugo-theme-elendia"
+tags = ["blog", "personal", "minmal"]
+features = []
+min_version = "0.54.0"
+
+[author]
+  name = "Miyako Kuwano"
+  homepage = "https://blog.elendia.net"
