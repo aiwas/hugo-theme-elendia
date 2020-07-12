@@ -1,0 +1,97 @@
+nav > .logo > a {
+    font-size: 1.5rem;
+}
+main > article.list:first-child {
+    margin-top: 0;
+}
+article {
+    margin: 2.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
+    /* margin: 3rem 1rem; */
+}
+article.list > h2 {
+    color: var(--color-secondary);
+    font-size: 1.5rem;
+    margin: -0.25rem 0 0 0;
+    font-feature-settings: "palt" 1;
+}
+article.list > p {
+    margin: 0;
+    padding: 0.5rem 1px;
+}
+.post-meta {
+    font-size: 0.85rem;
+}
+.post-meta > time {
+    font-weight: bold;
+    /* font-family: monospace; */
+    /* font-size: 0.8rem; */
+    padding: 0 1.2rem;
+    position: relative;
+}
+.post-meta > time::before {
+    display: inline-block;
+    position: absolute;
+    left: 2px;
+    top: 0;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-image: url("data:image/svg+xml,<svg width='1rem' height='1rem' viewBox='0 -4 16 20' class='bi bi-calendar-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z'/><path d='M2 1a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2H2zm14 4H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5z'/></svg>");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.post-meta > a {
+    padding: 0 1rem;
+    position: relative;
+}
+.post-meta > a::before {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-image: url("data:image/svg+xml,<svg width='1rem' height='1rem' viewBox='0 0 16 16' class='bi bi-tag-fill' fill='rgb(0, 105, 86)' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z'/></svg>");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+h1.logo {
+    /* margin: -1rem 0; */
+    font-family: "VI University";
+    font-size: 6rem;
+    font-weight: normal !important;
+    color: var(--color);
+    /* color: rgb(245, 245, 245);
+    text-shadow:
+        1px  1px 1px var(--color),
+        -1px  1px 1px var(--color),
+        1px -1px 1px var(--color),
+        -1px -1px 1px var(--color),
+        1px  0px 1px var(--color),
+        0px  1px 1px var(--color),
+        -1px  0px 1px var(--color),
+        0px -1px 1px var(--color); */
+}
+.paginator {
+    display: flex;
+    /* flex-flow: row; */
+    justify-content: center;
+    padding: 0 1rem;
+}
+.paginator > * {
+    width: 4rem;
+    text-align: center;
+}
+/* .paginator a {
+    color: rgb(245,245,245);
+    background-color: var(--color-secondary);
+    padding: 0.1rem 0.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+} */
+/* .paginator > *:last-child {
+    margin-left: auto;
+} */
