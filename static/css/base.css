@@ -1,0 +1,67 @@
+@font-face {
+    font-family: "Vi University";
+    src: url("/font/vi_university.woff") format("woff");
+}
+:root {
+    --color: rgb(0,54,44);
+    --color-secondary: rgb(0,105,86);
+    --font-family: 'Segoe UI', 'Noto Sans JP';
+    --hover-brightness: 0.6;
+}
+html {
+    font-size: 18px;
+}
+body {
+    background-color: rgb(245,245,245);
+    padding: 0;
+}
+nav {
+    margin-bottom: 0;
+    flex-flow: row;
+    /* padding: 0 1rem; */
+}
+nav ul {
+    margin-left: auto;
+}
+nav ul li {
+    text-transform: uppercase;
+}
+svg path.theme-color {
+    fill: var(--color-secondary);
+}
+.icon-parent {
+    position: relative;
+    width: 1rem;
+}
+.icon-parent svg {
+    position: absolute;
+    left: 0;
+    top: -16px;
+}
+nav a:hover {
+    text-decoration: none;
+}
+main {
+    width: var(--width-content);
+}
+footer {
+    text-align: center;
+}
+dt {
+    font-weight: bold;
+}
+/* dl + h3 {
+    clear: both;
+}
+dt {
+    float: left;
+    font-weight: bold;
+    width: 10rem;
+    clear: both;
+    white-space: nowrap;
+    margin-right: 2rem;
+}
+dd {
+    display: table-cell;
+    padding-left: 2rem;
+} */
