@@ -1,2 +1,6 @@
-<h1 class="logo">{{ .Site.Title }}</h1>
-<small>{{ .Site.Params.description }}</small>
+{{ if eq $.Kind "term" }}
+    <h1>#{{ $.Title }}</h1>
+{{ else }}
+    <h1 class="logo">{{ .Site.Title }}</h1>
+    <small>{{ .Site.Params.description }}</small>
+{{ end }}

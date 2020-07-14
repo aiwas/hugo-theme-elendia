@@ -1,3 +1,11 @@
+{{ define "title" }}
+    {{ if eq $.Kind "term" }}
+        #{{ $.Title }} の記事一覧 | {{ .Site.Title }}
+    {{ else }}
+        {{ .Site.Title }}
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
     {{ range .Paginator.Pages }}
     <article class="list">
