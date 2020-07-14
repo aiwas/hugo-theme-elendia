@@ -3,7 +3,7 @@
     header h1 {
         font-size: 3rem;
         font-feature-settings: "palt" 1;
-        margin-bottom: -3rem;
+        margin-bottom: 0;
     }
     article {
         margin-top: 0.5rem;
@@ -52,6 +52,16 @@
         content: "\201C";
         font-size: 10rem;
     }
+    time::before {
+        top: 2px !important;
+    }
+    .tag::before {
+        top: 4px !important;
+    }
+    .backnav {
+        display: flex;
+        justify-content: center;
+    }
 </style>
 {{ end }}
 
@@ -62,10 +72,16 @@
 {{ define "header" }}
     {{ partial "nav.html" . }}
     <h1>{{ .Title }}</h1>
+    {{ $date := .PublishDate.Format "2006-01-02" }}
+    <time datetime="{{ $date }}">{{ $date }}</time>
+    <div>{{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}{{ end }}</div>
 {{ end }}
 
 {{ define "main" }}
 <article>
     {{ .Content }}
 </article>
+<div class="backnav">
+    <span><a href="javascript:history.back()">Back</a></span>
+</div>
 {{ end }}

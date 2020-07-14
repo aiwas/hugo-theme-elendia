@@ -4,9 +4,9 @@
         <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         <p>{{ .Summary | plainify }}</p>
         <div class="post-meta">
-            {{ $date := dateFormat "2006-01-02" .Lastmod }}
+            {{ $date := .PublishDate.Format "2006-01-02" }}
             <time datetime="{{ $date }}">{{ $date }}</time>
-            {{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . | urlize }}">{{ . }}</a>{{ end }}{{ end }}
+            {{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}{{ end }}
         </div>
     </article>
     {{ end }}
@@ -17,7 +17,7 @@
             <a href="{{ .Paginator.Prev.URL }}">Prev</a>
             {{ end }}
         </span>
-        <span>{{ .Paginator.PageNumber }}</span>
+        <span>{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
         <span>
             {{ if .Paginator.HasNext }}
             <a href="{{ .Paginator.Next.URL }}">Next</a>
