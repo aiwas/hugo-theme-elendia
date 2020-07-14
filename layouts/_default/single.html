@@ -72,9 +72,15 @@
 {{ define "header" }}
     {{ partial "nav.html" . }}
     <h1>{{ .Title }}</h1>
-    {{ $date := .PublishDate.Format "2006-01-02" }}
-    <time datetime="{{ $date }}">{{ $date }}</time>
-    <div>{{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}{{ end }}</div>
+    {{ if ne .Type "page" }}
+        {{ $date := .PublishDate.Format "2006-01-02" }}
+        <time datetime="{{ $date }}">{{ $date }}</time>
+        <div>
+            {{ with .Params.tags }}{{ range . }}
+            <a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>
+            {{ end }}{{ end }}
+        </div>
+    {{ end }}
 {{ end }}
 
 {{ define "main" }}
