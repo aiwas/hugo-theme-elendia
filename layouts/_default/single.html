@@ -1,77 +1,10 @@
-{{ define "styles" }}
-<style>
-    header h1 {
-        font-size: 3rem;
-        font-feature-settings: "palt" 1;
-        margin-bottom: 0;
-    }
-    article {
-        margin-top: 0.5rem;
-    }
-    article img {
-        width: 100%;
-        border-radius: 0.5rem;
-    }
-    p {
-        padding: 0.75rem 0;
-        line-height: 2.5rem;
-    }
-    p::first-letter {
-        padding-left: 1rem;
-    }
-    table {
-        display: inherit;
-    }
-    .chroma {
-        border-radius: 0.5rem;
-    }
-    code, samp {
-        background-color: transparent;
-        margin: 0;
-    }
-    blockquote {
-        font-size: inherit;
-        max-width: inherit;
-        /* text-align: inherit; */
-
-        position: relative;
-        padding: 10px 15px 10px 60px;
-
-        background-color: rgb(238,238,238);
-        border-radius: 0.5rem;
-        font-style: italic;
-    }
-    blockquote:before {
-        display: inline-block;
-        position: absolute;
-        top: -2.5rem;
-        left: 0;
-        font-family: Arial;
-        color: rgb(169,169,169);
-
-        content: "\201C";
-        font-size: 10rem;
-    }
-    time::before {
-        top: 2px !important;
-    }
-    .tag::before {
-        top: 4px !important;
-    }
-    .backnav {
-        display: flex;
-        justify-content: center;
-    }
-</style>
-{{ end }}
-
 {{ define "title" }}
     {{ .Title }} | {{ .Site.Title }}
 {{ end }}
 
 {{ define "header" }}
     {{ partial "nav.html" . }}
-    <h1>{{ .Title }}</h1>
+    <h1 class="flex justify-center text-4xl font-bold" style="font-feature-settings: 'palt' 1;">{{ .Title }}</h1>
     {{ if ne .Type "page" }}
         {{ $date := .PublishDate.Format "2006-01-02" }}
         <time datetime="{{ $date }}">{{ $date }}</time>
@@ -87,7 +20,7 @@
 <article>
     {{ .Content }}
 </article>
-<div class="backnav">
-    <span><a href="javascript:history.back()">Back</a></span>
+<div class="flex justify-center">
+    <span><a class="text-green-900 font-bold" href="javascript:history.back()">Back</a></span>
 </div>
 {{ end }}
