@@ -4,22 +4,20 @@
 
 {{ define "header" }}
     {{ partial "nav.html" . }}
-    <h1 class="flex justify-center text-4xl font-bold" style="font-feature-settings: 'palt' 1;">{{ .Title }}</h1>
+    <h1 class="flex justify-center mx-2 text-4xl font-bold" style="font-feature-settings: 'palt' 1;">{{ .Title }}</h1>
     {{ if ne .Type "page" }}
-        {{ $date := .PublishDate.Format "2006-01-02" }}
-        <time datetime="{{ $date }}">{{ $date }}</time>
-        <div>
-            {{ with .Params.tags }}{{ range . }}
-            <a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>
-            {{ end }}{{ end }}
+        <div class="flex flex-wrap justify-center">
+            {{ partial "tags" . }}
         </div>
     {{ end }}
 {{ end }}
 
 {{ define "main" }}
-<article id="content">
+<article id="content" class="p-4">
     {{ .Content }}
 </article>
+<hr class="m-8">
+<small class="flex justify-end m-4">Last modify: {{ .Lastmod.Format "2006-01-02 15:04:05" }}</small>
 <div class="flex justify-center">
     <span><a class="font-bold text-green-900" href="javascript:history.back()">Back</a></span>
 </div>
