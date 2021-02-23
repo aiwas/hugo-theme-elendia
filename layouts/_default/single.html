@@ -17,10 +17,10 @@
 {{ end }}
 
 {{ define "main" }}
-<article>
+<article id="content">
     {{ .Content }}
 </article>
 <div class="flex justify-center">
-    <span><a class="text-green-900 font-bold" href="javascript:history.back()">Back</a></span>
+    <span><a class="font-bold text-green-900" href="javascript:history.back()">Back</a></span>
 </div>
 {{ end }}
