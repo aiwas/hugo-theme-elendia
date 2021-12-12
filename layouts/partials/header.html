@@ -1,6 +1,6 @@
 {{ if eq $.Kind "term" }}
-    <h1>#{{ $.Title }}</h1>
+    <h1 class="flex justify-start mx-2 my-4">#{{ $.Title }}</h1>
 {{ else }}
-    <h1 class="logo">{{ .Site.Title }}</h1>
-    <small>{{ .Site.Params.description }}</small>
+    <h1 class="flex justify-center text-6xl font-bold text-green-900">{{ .Site.Title }}</h1>
+    <small class="flex justify-center text-base">{{ .Site.Params.description }}</small>
 {{ end }}

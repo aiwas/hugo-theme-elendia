@@ -12,10 +12,8 @@
 {{ with .Description }}<meta property="og:description" content="{{ . }}">{{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}">
 {{ with .Params.og_image }}<meta property="og:image" content="{{ $.Permalink }}{{ . }}">{{ end }}
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<link rel="icon" href="{{ .Site.BaseURL }}/favicon.png">-->
-<link rel="stylesheet" href="https://unpkg.com/mvp.css">
-<link rel="stylesheet" href="/css/base.css">
-{{ if not .Page.IsPage }}<link rel="stylesheet" href="/css/list.css">{{ end }}
-<link rel="stylesheet" href="/css/chroma-github.css">
+<link rel="stylesheet" href="{{ (resources.Get "/css/style.css" | resources.PostCSS (dict "config" "./assets/css/postcss.config.js") | minify | fingerprint).Permalink }}">
+<link rel="stylesheet" href="/css/chroma-dracula.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">

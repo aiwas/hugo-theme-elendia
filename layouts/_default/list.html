@@ -1,35 +1,35 @@
 {{ define "title" }}
-    {{ if eq $.Kind "term" }}
-        #{{ $.Title }} の記事一覧 | {{ .Site.Title }}
-    {{ else }}
-        {{ .Site.Title }}
-    {{ end }}
+{{ if eq $.Kind "term" }}
+#{{ $.Title }} の記事一覧 | {{ .Site.Title }}
+{{ else }}
+{{ .Site.Title }}
 {{ end }}
-
+{{ end }}
 {{ define "main" }}
+<div class="flex flex-col divide-y divide-gray-300">
     {{ range .Paginator.Pages }}
-    <article class="list">
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <p>{{ .Summary | plainify }}</p>
-        <div class="post-meta">
-            {{ $date := .PublishDate.Format "2006-01-02" }}
-            <time datetime="{{ $date }}">{{ $date }}</time>
-            {{ with .Params.tags }}{{ range . }}<a href="/tags/{{ . | urlize }}" class="tag">{{ . }}</a>{{ end }}{{ end }}
+    <article class="px-4 py-6">
+        <h2><a class="text-3xl font-bold hover:underline" style="font-feature-settings: 'palt' 1;" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <p class="mx-2 text-sm">{{ .Summary | plainify }}</p>
+        <div class="flex flex-wrap justify-start">
+            {{ partial "tags" . }}
         </div>
     </article>
     {{ end }}
-    
-    <div class="paginator">
-        <span>
+</div>
+<div>
+    <div class="flex justify-center">
+        <span class="w-16 text-center">
             {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}">Prev</a>
+            <a class="font-bold text-green-900" href="{{ .Paginator.Prev.URL }}">Prev</a>
             {{ end }}
         </span>
-        <span>{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
-        <span>
+        <span class="w-16 text-center">{{ .Paginator.PageNumber }} / {{ .Paginator.TotalPages }}</span>
+        <span class="w-16 text-center">
             {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}">Next</a>
+            <a class="font-bold text-green-900" href="{{ .Paginator.Next.URL }}">Next</a>
             {{ end }}
         </span>
     </div>
+</div>
 {{ end }}
