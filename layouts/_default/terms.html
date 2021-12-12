@@ -33,15 +33,17 @@
 
 {{ define "header" }}
     {{ partial "nav.html" . }}
-    <h1>{{ .Title }}</h1>
+    <h1 class="flex justify-center mx-2 text-4xl font-bold">{{ .Title }}</h1>
 {{ end }}
 
 {{ define "main" }}
 
-<ul>
-    {{ range $key, $value := .Data.Terms.ByCount }}
-    <li><a href="/tags/{{ $value.Name }}" class="tag">{{ $value.Name }}</a> <sup>{{ $value.Count }}</sup></li>
-    {{ end }}
-</ul>
+<div class="container p-4">
+    <ul class="flex flex-wrap">
+        {{ range $key, $value := .Data.Terms.ByCount }}
+        <li class="text-xl m-3"><a href="/tags/{{ $value.Name }}" class="tag pl-6 relative">{{ $value.Name }}</a> <sup class="font-bold rounded-2xl">{{ $value.Count }}</sup></li>
+        {{ end }}
+    </ul>
+</div>
 
 {{ end }}

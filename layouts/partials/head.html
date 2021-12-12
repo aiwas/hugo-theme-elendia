@@ -14,18 +14,6 @@
 {{ with .Params.og_image }}<meta property="og:image" content="{{ $.Permalink }}{{ . }}">{{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--<link rel="icon" href="{{ .Site.BaseURL }}/favicon.png">-->
-<link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
-<!-- <link rel="stylesheet" href="/css/tailwind.min.css"> -->
-<link rel="stylesheet" href="/css/chroma-github.css">
+<link rel="stylesheet" href="{{ (resources.Get "/css/style.css" | resources.PostCSS (dict "config" "./assets/css/postcss.config.js") | minify | fingerprint).Permalink }}">
+<link rel="stylesheet" href="/css/chroma-dracula.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
-<style>
-:root {
-    --color: rgb(0,54,44);
-    --color-secondary: rgb(0,105,86);
-    --font-family: 'Segoe UI', 'Noto Sans JP';
-    --hover-brightness: 0.6;
-}
-* {
-    font-family: 'Segoe UI', 'Noto Sans JP';
-}
-</style>
